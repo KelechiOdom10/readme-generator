@@ -1,6 +1,7 @@
 <script>
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
+  import { Textarea } from "$lib/components/ui/textarea";
   import { Github, SunIcon } from "lucide-svelte";
 </script>
 
@@ -26,3 +27,5 @@
 </Button>
 
 <Input placeholder="Enter your name" class="m-3 w-full max-w-xs" />
+
+<Textarea placeholder="Enter your message" class="m-3 w-full max-w-xs" />
