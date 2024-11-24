@@ -1,3 +1,8 @@
+<script>
+  import { Button } from "$lib/components/ui/button";
+  import { Github, SunIcon } from "lucide-svelte";
+</script>
+
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 
@@ -6,3 +11,15 @@
 >
   Login
 </button>
+
+<Button variant="accent">Accehnt Button component</Button>
+<Button variant="secondary">Secon Button component</Button>
+<Button variant="default">Default Button component</Button>
+<Button variant="destructive">Destructive Button component</Button>
+<Button
+  ><Github class="h-4 w-4" />
+  Send</Button
+>
+<Button variant="secondary" size="icon">
+  <SunIcon />
+</Button>
