@@ -20,7 +20,11 @@
           "bg-black text-white dark:bg-white dark:text-black",
           "hover:bg-primary hover:text-primary-foreground hover:border-transparent"
         ],
-        destructive: ["bg-destructive text-destructive-foreground", "hover:bg-destructive/90"]
+        destructive: [
+          "bg-destructive text-destructive-foreground",
+          "hover:bg-destructive/90",
+          "focus-visible:ring-destructive"
+        ]
       },
       size: {
         default: "h-10 px-4 py-2",
