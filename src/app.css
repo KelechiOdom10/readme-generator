@@ -1,5 +1,81 @@
 @import "tailwindcss";
 
+@theme {
+  /* Typography */
+  --font-sans: "Mabry Pro", system-ui, sans-serif;
+
+  /* Colors - Using OKLCH for better color reproduction */
+  /* Primary Colors */
+  --color-black: oklch(0.16 0 0);
+  --color-white: oklch(1 0 0);
+
+  /* Brand Colors */
+  --color-primary-100: oklch(0.95 0.15 350); /* Light Pink */
+  --color-primary-200: oklch(0.85 0.18 350);
+  --color-primary-300: oklch(0.75 0.2 350);
+  --color-primary-400: oklch(0.65 0.22 350);
+  --color-primary-500: oklch(0.55 0.25 350); /* Main Pink */
+  --color-primary-600: oklch(0.45 0.22 350);
+
+  /* Gray Scale */
+  --color-gray-100: oklch(0.95 0 0);
+  --color-gray-200: oklch(0.85 0 0);
+  --color-gray-300: oklch(0.75 0 0);
+  --color-gray-400: oklch(0.65 0 0);
+  --color-gray-500: oklch(0.55 0 0);
+  --color-gray-600: oklch(0.45 0 0);
+  --color-gray-700: oklch(0.35 0 0);
+  --color-gray-800: oklch(0.25 0 0);
+  --color-gray-900: oklch(0.15 0 0);
+
+  /* Semantic Colors */
+  --color-success-100: oklch(0.95 0.12 160); /* Light Mint */
+  --color-success-500: oklch(0.65 0.15 160); /* Mint */
+
+  --color-warning-100: oklch(0.95 0.12 85); /* Light Gold */
+  --color-warning-500: oklch(0.75 0.15 85); /* Gold */
+
+  --color-danger-100: oklch(0.95 0.12 25); /* Light Red */
+  --color-danger-500: oklch(0.65 0.18 25); /* Red */
+
+  /* Border Radius */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Typography Scale */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing: 0.25rem; /* Base spacing unit */
+
+  /* Container Sizes (from design system) */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
 @layer base {
   *,
   ::after,
