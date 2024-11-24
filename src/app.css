@@ -89,7 +89,7 @@
 
 @theme {
   /* Typography */
-  --font-sans: "Mabry Pro", system-ui, sans-serif;
+  --font-sans: "Space Grotesk Variable", sans-serif;
 
   /* Colors */
   --color-background: var(--background);
