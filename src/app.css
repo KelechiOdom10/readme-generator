@@ -7,12 +7,13 @@
   --white: oklch(1 0 0);
 
   /* Brand Colors */
-  --primary-100: oklch(0.95 0.15 350); /* Light Pink */
-  --primary-200: oklch(0.85 0.18 350);
-  --primary-300: oklch(0.75 0.2 350);
-  --primary-400: oklch(0.65 0.22 350);
-  --primary-500: oklch(0.55 0.25 350); /* Main Pink */
-  --primary-600: oklch(0.45 0.22 350);
+  --primary-50: oklch(0.98 0.02 332); /* Light Pink */
+  --primary-100: oklch(0.96 0.03 332);
+  --primary-200: oklch(0.95 0.05 332);
+  --primary-300: oklch(0.9 0.1 332);
+  --primary-400: oklch(0.85 0.15 332);
+  --primary-500: oklch(0.81 0.2 332); /* Main Pink */
+  --primary-600: oklch(0.75 0.18 332);
 
   /* Gray Scale */
   --gray-50: oklch(0.96 0 0);
@@ -48,7 +49,7 @@
   --muted-foreground: var(--gray-500);
   --border: var(--gray-200);
   --input: var(--gray-200);
-  --primary: var(--primary-400);
+  --primary: var(--primary-500);
   --primary-foreground: var(--gray-900);
   --secondary: var(--gray-100);
   --secondary-foreground: var(--gray-900);
@@ -56,7 +57,7 @@
   --accent-foreground: var(--gray-900);
   --destructive: var(--danger-500);
   --destructive-foreground: var(--white);
-  --ring: var(--primary-500);
+  --ring: var(--gray-800);
   --shadow-offset-xs: 2px 2px 0 var(--gray-900);
   --shadow-offset-sm: 4px 4px 0 var(--gray-900);
   --shadow-offset-md: 6px 6px 0 var(--gray-900);
@@ -67,7 +68,7 @@
   --sidebar-accent: var(--gray-200);
   --sidebar-accent-foreground: var(--gray-900);
   --sidebar-border: var(--gray-200);
-  --sidebar-ring: var(--primary-500);
+  --sidebar-ring: var(--gray-800);
   --radius: 0.5rem;
 
   /* dark theme */
@@ -99,9 +100,9 @@
     --sidebar-primary-foreground: var(--gray-900);
     --sidebar-accent: var(--gray-700);
     --sidebar-accent-foreground: var(--gray-100);
-    --sidebar-border: var(--gray-700);
-    --sidebar-ring: var(--primary-400);
-    --ring: var(--primary-400);
+    --sidebar-border: var(--gray-800);
+    --sidebar-ring: var(--primary-500);
+    --ring: var(--primary-500);
   }
 }
 
@@ -113,6 +114,7 @@
   --color-black: var(--black);
   --color-white: var(--white);
 
+  --color-primary-50: var(--primary-50);
   --color-primary-100: var(--primary-100);
   --color-primary-200: var(--primary-200);
   --color-primary-300: var(--primary-300);
