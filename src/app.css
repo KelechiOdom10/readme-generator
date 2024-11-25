@@ -48,7 +48,7 @@
   --muted: var(--gray-200);
   --muted-foreground: var(--gray-500);
   --border: var(--gray-200);
-  --input: var(--gray-200);
+  --input: var(--gray-500);
   --primary: var(--primary-500);
   --primary-foreground: var(--gray-900);
   --secondary: var(--gray-100);
@@ -82,7 +82,7 @@
     --muted: var(--gray-800);
     --muted-foreground: var(--gray-400);
     --border: var(--gray-700);
-    --input: var(--gray-700);
+    --input: var(--gray-600);
     --primary: var(--primary-400);
     --primary-foreground: var(--gray-900);
     --secondary: var(--gray-800);
@@ -91,9 +91,9 @@
     --accent-foreground: var(--gray-100);
     --destructive: var(--danger-500);
     --destructive-foreground: var(--white);
-    --shadow-offset-xs: 2px 2px 0 var(--gray-800);
-    --shadow-offset-sm: 4px 4px 0 var(--gray-800);
-    --shadow-offset-md: 6px 6px 0 var(--gray-800);
+    --shadow-offset-xs: 2px 2px 0 var(--gray-50);
+    --shadow-offset-sm: 4px 4px 0 var(--gray-50);
+    --shadow-offset-md: 6px 6px 0 var(--gray-50);
     --sidebar-background: var(--gray-850);
     --sidebar-foreground: var(--white);
     --sidebar-primary: var(--primary-400);
