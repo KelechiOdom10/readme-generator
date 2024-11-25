@@ -14,17 +14,19 @@
   Login
 </button>
 
-<Button variant="accent">Accehnt Button component</Button>
-<Button variant="secondary">Secon Button component</Button>
-<Button variant="default">Default Button component</Button>
-<Button variant="destructive">Destructive Button component</Button>
-<Button
-  ><Github class="h-4 w-4" />
-  Send</Button
->
-<Button variant="secondary" size="icon">
-  <SunIcon />
-</Button>
+<div class="mx-2 flex gap-3">
+  <Button variant="accent">Accehnt Button component</Button>
+  <Button variant="secondary">Secon Button component</Button>
+  <Button variant="default">Default Button component</Button>
+  <Button variant="destructive">Destructive Button component</Button>
+  <Button
+    ><Github class="h-4 w-4" />
+    Send</Button
+  >
+  <Button variant="secondary" size="icon">
+    <SunIcon />
+  </Button>
+</div>
 
 <Input placeholder="Enter your name" class="m-3 w-full max-w-xs" />
 
