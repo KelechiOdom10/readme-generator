@@ -1,33 +1,80 @@
-<script>
+<script lang="ts">
   import { Button } from "$lib/components/ui/button";
-  import { Input } from "$lib/components/ui/input";
-  import { Textarea } from "$lib/components/ui/textarea";
-  import { Github, SunIcon } from "lucide-svelte";
+  import { sectionTemplates } from "../data/section-templates";
+  import { ReadmeStore } from "$lib/stores/readme-store.svelte";
+
+  const store = new ReadmeStore();
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<main class="container mx-auto p-4">
+  <h1 class="mb-6 text-3xl font-bold">README Generator</h1>
 
-<button
-  class="bg-primary text-primary-foreground hover:shadow-offset-sm ring-offset-background focus-visible:ring-primary m-4 inline-flex w-fit items-center justify-center rounded-sm px-5 py-1.5 text-sm font-normal transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-x-1 active:translate-y-1 active:shadow-none"
->
-  Login
-</button>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div>
+      <h2 class="mb-4 text-xl font-semibold">Available Templates</h2>
+      <div class="space-y-4">
+        {#each sectionTemplates as template}
+          <div class="rounded-lg border p-4">
+            <h3 class="font-medium">{template.title}</h3>
+            <Button variant="secondary" class="mt-2" onclick={() => store.addSection(template)}>
+              Add Section
+            </Button>
+          </div>
+        {/each}
+      </div>
+    </div>
 
-<div class="mx-2 flex gap-3">
-  <Button variant="accent">Accehnt Button component</Button>
-  <Button variant="secondary">Secon Button component</Button>
-  <Button variant="default">Default Button component</Button>
-  <Button variant="destructive">Destructive Button component</Button>
-  <Button
-    ><Github class="h-4 w-4" />
-    Send</Button
-  >
-  <Button variant="secondary" size="icon">
-    <SunIcon />
-  </Button>
-</div>
+    <div>
+      <h2 class="mb-4 text-xl font-semibold">Your README Sections</h2>
+      <div class="space-y-4">
+        {#if store.selectedSections.length === 0}
+          <p class="text-gray-500">
+            No sections added yet. Select templates from the left to build your README.
+          </p>
+        {:else}
+          {#each store.selectedSections as section, index}
+            <div class="rounded-lg border p-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">{section.title}</h3>
+                <div class="space-x-2">
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    onclick={() => store.moveSection(index, "up")}
+                    disabled={index === 0}
+                  >
+                    ↑
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    onclick={() => store.moveSection(index, "down")}
+                    disabled={index === store.selectedSections.length - 1}
+                  >
+                    ↓
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    size="icon"
+                    onclick={() => store.removeSection(index)}
+                  >
+                    ×
+                  </Button>
+                </div>
+              </div>
+            </div>
+          {/each}
+        {/if}
+      </div>
 
-<Input placeholder="Enter your name" class="m-3 w-full max-w-xs" />
-
-<Textarea placeholder="Enter your message" class="m-3 w-full max-w-xs" />
+      {#if store.selectedSections.length > 0}
+        <div class="mt-6">
+          <h2 class="mb-4 text-xl font-semibold">Preview</h2>
+          <div class="bg-muted rounded-lg border p-4 font-mono whitespace-pre-wrap">
+            {store.preview}
+          </div>
+        </div>
+      {/if}
+    </div>
+  </div>
+</main>
