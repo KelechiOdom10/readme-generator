@@ -6,7 +6,7 @@
   export const buttonVariants = tv({
     base: [
       "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-normal",
-      "ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "ring-offset-background focus-visible:outline-none focus-visible:ring focus-visible:ring-ring focus-visible:ring-offset-2",
       "hover:shadow-offset-sm active:shadow-none hover:-translate-y-1 hover:-translate-x-1 active:translate-x-0 active:translate-y-0",
       "transition-all duration-200 cursor-pointer",
       "disabled:pointer-events-none disabled:opacity-50",
