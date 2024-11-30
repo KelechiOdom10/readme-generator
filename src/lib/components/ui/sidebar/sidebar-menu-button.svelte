@@ -7,10 +7,10 @@
       variant: {
         default: "hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground",
         outline:
-          "bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]"
+          "bg-muted dark:border-none border shadow hover:bg-sidebar-accent/30 hover:text-sidebar-accent-foreground active:bg-accent/20 active:text-sidebar-accent-foreground"
       },
       size: {
-        default: "h-8 text-sm",
+        default: "h-9 text-sm",
         sm: "h-7 text-xs",
         lg: "h-12 text-sm group-data-[collapsible=icon]:!p-0"
       }
