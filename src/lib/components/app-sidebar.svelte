@@ -1,31 +1,43 @@
 <script lang="ts">
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import PlusIcon from "lucide-svelte/icons/plus";
+  import GripVerticalIcon from "lucide-svelte/icons/grip-vertical";
   import Input from "./ui/input/input.svelte";
   import { sectionTemplates } from "../../data/section-templates";
-  import { ReadmeStore } from "$lib/stores/readme-store.svelte";
+  import { readmeStore } from "$lib/stores/readme-store.svelte";
   import Button from "./ui/button/button.svelte";
   import { cn } from "$lib/utils";
 
-  const store = new ReadmeStore();
   let searchQuery = $state("");
 
   const filteredTemplates = $derived(
-    sectionTemplates.filter((section) =>
-      section.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    sectionTemplates
+      .filter(
+        (template) => !readmeStore.selectedSections.some((section) => section.id === template.id)
+      )
+      .filter((template) => template.title.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+  const totalSectionsLength = $derived(
+    filteredTemplates.length + readmeStore.selectedSections.length
   );
 </script>
 
 <Sidebar.Root side="left" variant="sidebar">
-  <Sidebar.Content class="h-screen overflow-hidden">
+  <Sidebar.Content class="h-screen">
     <Sidebar.Group>
-      <Sidebar.GroupLabel>Sections</Sidebar.GroupLabel>
+      <hgroup class="mb-3 flex flex-col space-y-0">
+        <Sidebar.Header class="font-semibold">Sections</Sidebar.Header>
+        <Sidebar.SidebarGroupLabel>
+          Click on a section below to edit the contents
+        </Sidebar.SidebarGroupLabel>
+      </hgroup>
       <Sidebar.GroupContent>
-        <Sidebar.Menu>
-          {#each store.selectedSections as selectedSection}
+        <Sidebar.Menu class="space-y-2">
+          {#each readmeStore.selectedSections as selectedSection}
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
+              <Sidebar.MenuButton variant="outline">
+                <GripVerticalIcon class="size-5 cursor-grab" />
                 {selectedSection.title}
               </Sidebar.MenuButton>
             </Sidebar.MenuItem>
@@ -34,7 +46,12 @@
       </Sidebar.GroupContent>
     </Sidebar.Group>
     <Sidebar.Group>
-      <Sidebar.GroupLabel>Templates</Sidebar.GroupLabel>
+      <hgroup class="mb-3 flex flex-col space-y-0">
+        <Sidebar.Header class="font-semibold">Templates</Sidebar.Header>
+        <Sidebar.SidebarGroupLabel
+          >Click on a section below to add it to your readme</Sidebar.SidebarGroupLabel
+        >
+      </hgroup>
       <Input placeholder="Search templates" bind:value={searchQuery} />
       <Button class="mt-5 mb-3">
         <PlusIcon />
@@ -42,11 +59,11 @@
       </Button>
       <Sidebar.GroupContent class="relative">
         <Sidebar.Menu
-          class="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-muted max-h-[calc(100vh-22rem)] space-y-2.5 overflow-y-auto"
+          class="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-muted space-y-2.5 overflow-y-auto pb-12"
         >
           {#each filteredTemplates as section, i}
             <Sidebar.MenuItem class={cn("px-1", { "mt-1": i === 0 })}>
-              <Sidebar.MenuButton onclick={() => store.addSection(section)}>
+              <Sidebar.MenuButton variant="outline" onclick={() => readmeStore.addSection(section)}>
                 <span>{section.title}</span>
               </Sidebar.MenuButton>
             </Sidebar.MenuItem>
@@ -55,16 +72,16 @@
         {#if filteredTemplates.length === 0}
           <p class="text-muted-foreground text-sm">No templates found</p>
         {/if}
-        <div
-          class={cn(
-            "from-background pointer-events-none absolute right-0 bottom-0 left-0 h-8 bg-gradient-to-t to-transparent",
-            {
-              "opacity-100": filteredTemplates.length > 10,
-              "opacity-0": filteredTemplates.length <= 10
-            }
-          )}
-        ></div>
       </Sidebar.GroupContent>
     </Sidebar.Group>
+    <div
+      class={cn(
+        "from-primary-100/50 dark:via-gray-850 pointer-events-none absolute right-0 bottom-0 left-0 h-10 bg-gradient-to-t to-transparent dark:from-gray-900",
+        {
+          "opacity-100": totalSectionsLength > 10,
+          "opacity-0": totalSectionsLength <= 10
+        }
+      )}
+    ></div>
   </Sidebar.Content>
 </Sidebar.Root>
