@@ -1,9 +1,7 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
+  import { readmeStore } from "$lib/stores/readme-store.svelte";
   import { sectionTemplates } from "../data/section-templates";
-  import { ReadmeStore } from "$lib/stores/readme-store.svelte";
-
-  const store = new ReadmeStore();
 </script>
 
 <main class="container mx-auto p-4">
@@ -16,7 +14,11 @@
         {#each sectionTemplates as template}
           <div class="rounded-lg border p-4">
             <h3 class="font-medium">{template.title}</h3>
-            <Button variant="secondary" class="mt-2" onclick={() => store.addSection(template)}>
+            <Button
+              variant="secondary"
+              class="mt-2"
+              onclick={() => readmeStore.addSection(template)}
+            >
               Add Section
             </Button>
           </div>
@@ -27,12 +29,12 @@
     <div>
       <h2 class="mb-4 text-xl font-semibold">Your README Sections</h2>
       <div class="space-y-4">
-        {#if store.selectedSections.length === 0}
+        {#if readmeStore.selectedSections.length === 0}
           <p class="text-gray-500">
             No sections added yet. Select templates from the left to build your README.
           </p>
         {:else}
-          {#each store.selectedSections as section, index}
+          {#each readmeStore.selectedSections as section, index}
             <div class="rounded-lg border p-4">
               <div class="flex items-center justify-between">
                 <h3 class="font-medium">{section.title}</h3>
@@ -40,7 +42,7 @@
                   <Button
                     variant="secondary"
                     size="icon"
-                    onclick={() => store.moveSection(index, "up")}
+                    onclick={() => readmeStore.moveSection(index, "up")}
                     disabled={index === 0}
                   >
                     ↑
@@ -48,15 +50,15 @@
                   <Button
                     variant="secondary"
                     size="icon"
-                    onclick={() => store.moveSection(index, "down")}
-                    disabled={index === store.selectedSections.length - 1}
+                    onclick={() => readmeStore.moveSection(index, "down")}
+                    disabled={index === readmeStore.selectedSections.length - 1}
                   >
                     ↓
                   </Button>
                   <Button
                     variant="destructive"
                     size="icon"
-                    onclick={() => store.removeSection(index)}
+                    onclick={() => readmeStore.removeSection(index)}
                   >
                     ×
                   </Button>
@@ -67,11 +69,11 @@
         {/if}
       </div>
 
-      {#if store.selectedSections.length > 0}
+      {#if readmeStore.selectedSections.length > 0}
         <div class="mt-6">
           <h2 class="mb-4 text-xl font-semibold">Preview</h2>
           <div class="bg-muted rounded-lg border p-4 font-mono whitespace-pre-wrap">
-            {store.preview}
+            {readmeStore.preview}
           </div>
         </div>
       {/if}

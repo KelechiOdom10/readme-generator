@@ -62,3 +62,5 @@ export class ReadmeStore {
     saveSections(this.#selectedSections);
   }
 }
+
+export const readmeStore = new ReadmeStore();
