@@ -100,6 +100,12 @@ export class ReadmeStore {
       localStorage.setItem("currentSection", JSON.stringify(this.#currentSection));
     }
   }
+
+  deleteSection(title: string) {
+    this.#selectedSections = this.#selectedSections.filter(section => section.title !== title);
+    this.updatePreview();
+    this.saveToStorage();
+  }
 }
 
 export const readmeStore = new ReadmeStore();
