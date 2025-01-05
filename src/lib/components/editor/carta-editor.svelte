@@ -5,6 +5,7 @@
   import { code } from "@cartamd/plugin-code";
   import DOMPurify from "isomorphic-dompurify";
 
+  import "carta-md/default.css"; /* Default theme */
   import "@cartamd/plugin-slash/default.css";
   import "@cartamd/plugin-emoji/default.css";
   import "@cartamd/plugin-code/default.css";
@@ -38,5 +39,11 @@
   /* Set your monospace font (Required to have the editor working correctly!) */
   :global(.carta-font-code) {
     font-size: 0.875rem;
+  }
+
+  :global(.carta-renderer) {
+    height: 78vh !important;
+    overflow: auto !important;
+    min-height: 100% !important;
   }
 </style>
