@@ -45,8 +45,13 @@
     "vite": "^5.0.3"
   },
   "dependencies": {
+    "@cartamd/plugin-anchor": "^2.1.1",
+    "@cartamd/plugin-code": "^4.0.6",
+    "@cartamd/plugin-emoji": "^4.2.1",
+    "@cartamd/plugin-slash": "^4.1.2",
     "@fontsource-variable/space-grotesk": "^5.1.0",
     "bits-ui": "^1.0.0-next.64",
+    "carta-md": "^4.6.7",
     "lucide-svelte": "^0.460.1"
   }
 }
