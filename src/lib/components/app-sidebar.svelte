@@ -36,7 +36,14 @@
         <Sidebar.Menu class="space-y-2">
           {#each readmeStore.selectedSections as selectedSection}
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton variant="outline">
+              <Sidebar.MenuButton
+                variant="outline"
+                class={cn({
+                  "outline-primary-600 dark:outline-primary-800 outline":
+                    selectedSection.id === readmeStore.currentSection?.id
+                })}
+                onclick={() => readmeStore.setCurrentSection(selectedSection)}
+              >
                 <GripVerticalIcon class="size-5 cursor-grab" />
                 {selectedSection.title}
               </Sidebar.MenuButton>
