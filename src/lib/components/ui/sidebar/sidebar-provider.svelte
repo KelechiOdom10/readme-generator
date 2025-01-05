@@ -48,7 +48,7 @@
   <div
     style="--sidebar-width: {SIDEBAR_WIDTH}; --sidebar-width-icon: {SIDEBAR_WIDTH_ICON}; {style}"
     class={cn(
-      "group/sidebar-wrapper has-[[data-variant=inset]]:bg-sidebar-background flex min-h-svh w-full",
+      "group/sidebar-wrapper has-[[data-variant=inset]]:bg-sidebar-background min-h-svh w-full md:flex",
       className
     )}
     bind:this={ref}
