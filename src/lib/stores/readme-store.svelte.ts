@@ -5,10 +5,21 @@ import { loadSections, saveSections } from "../storage";
 export class ReadmeStore {
   #selectedSections = $state<Section[]>([]);
   #preview = $state("");
+  #currentSection = $state<Section | null>(null);
 
   constructor() {
     if (browser) {
       this.loadFromStorage();
+    }
+  }
+
+  initializeCurrentSection() {
+    const savedCurrentSection = localStorage.getItem("currentSection");
+    if (savedCurrentSection) {
+      this.#currentSection = JSON.parse(savedCurrentSection);
+    } else if (this.#selectedSections.length > 0) {
+      this.#currentSection = this.#selectedSections[0];
+      localStorage.setItem("currentSection", JSON.stringify(this.#currentSection));
     }
   }
 
@@ -20,9 +31,14 @@ export class ReadmeStore {
     return this.#preview;
   }
 
+  get currentSection() {
+    return this.#currentSection;
+  }
+
   private loadFromStorage() {
     this.#selectedSections = loadSections();
     this.updatePreview();
+    this.initializeCurrentSection();
   }
 
   addSection(template: Section) {
@@ -60,6 +76,28 @@ export class ReadmeStore {
   private saveToStorage() {
     if (!browser) return;
     saveSections(this.#selectedSections);
+  }
+
+  setCurrentSection(section: Section | null) {
+    this.#currentSection = section;
+    localStorage.setItem("currentSection", JSON.stringify(section));
+  }
+
+  updateSectionContent(content: string) {
+    if (!this.#currentSection) return;
+
+    // Update the current section's markdown
+    this.#currentSection.markdown = content;
+
+    // Update the section in the selectedSections array
+    const sectionIndex = this.#selectedSections.findIndex((s) => s.id === this.#currentSection?.id);
+
+    if (sectionIndex !== -1) {
+      this.#selectedSections[sectionIndex] = { ...this.#currentSection };
+      this.updatePreview();
+      this.saveToStorage();
+      localStorage.setItem("currentSection", JSON.stringify(this.#currentSection));
+    }
   }
 }
 
