@@ -5,6 +5,10 @@
   import { code } from "@cartamd/plugin-code";
   import DOMPurify from "isomorphic-dompurify";
 
+  import "@cartamd/plugin-slash/default.css";
+  import "@cartamd/plugin-emoji/default.css";
+  import "@cartamd/plugin-code/default.css";
+
   type CartaEditorProps = {
     value: string;
     labels?: Partial<Labels> | undefined;
