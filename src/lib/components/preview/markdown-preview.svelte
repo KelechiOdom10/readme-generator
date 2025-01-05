@@ -11,7 +11,7 @@
   prose-code:text-foreground prose-pre:text-foreground prose-pre:bg-gray-900/95! dark:prose-pre:bg-secondary!
   prose-ul:text-secondary-foreground
   prose-li:text-secondary-foreground
-  mt-11 h-full w-full"
+  h-full w-full"
 >
   <CartaEditor
     bind:value
