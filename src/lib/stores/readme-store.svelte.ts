@@ -44,6 +44,7 @@ export class ReadmeStore {
   addSection(template: Section) {
     const newSection = { ...template };
     this.#selectedSections = [...this.#selectedSections, newSection];
+    this.setCurrentSection(newSection);
     this.updatePreview();
     this.saveToStorage();
   }
