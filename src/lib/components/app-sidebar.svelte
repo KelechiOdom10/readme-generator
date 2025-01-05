@@ -1,11 +1,9 @@
 <script lang="ts">
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import PlusIcon from "lucide-svelte/icons/plus";
   import GripVerticalIcon from "lucide-svelte/icons/grip-vertical";
   import Input from "./ui/input/input.svelte";
   import { sectionTemplates } from "../../data/section-templates";
   import { readmeStore } from "$lib/stores/readme-store.svelte";
-  import Button from "./ui/button/button.svelte";
   import { cn } from "$lib/utils";
 
   let searchQuery = $state("");
@@ -59,11 +57,11 @@
           >Click on a section below to add it to your readme</Sidebar.SidebarGroupLabel
         >
       </hgroup>
-      <Input placeholder="Search templates" bind:value={searchQuery} />
-      <Button class="mt-5 mb-3">
+      <Input placeholder="Search templates" bind:value={searchQuery} class="mb-3" />
+      <!-- <Button class="mt-5 mb-3">
         <PlusIcon />
         <span>Custom section</span>
-      </Button>
+      </Button> -->
       <Sidebar.GroupContent class="relative">
         <Sidebar.Menu
           class="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border hover:scrollbar-thumb-muted space-y-2.5 overflow-y-auto pb-12"
