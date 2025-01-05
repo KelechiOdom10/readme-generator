@@ -110,6 +110,20 @@
     --sidebar-border: var(--gray-800);
     --sidebar-ring: var(--primary-500);
     --ring: var(--primary-500);
+
+    .carta-theme__default {
+      --border-color: var(--gray-800);
+      --selection-color: var(--gray-800);
+      --focus-outline: var(--focus-outline-dark);
+      --hover-color: var(--gray-800);
+      --caret-color: var(--gray-200);
+      --text-color: var(--gray-200);
+    }
+
+    .shiki,
+    .shiki span {
+      color: var(--shiki-dark) !important;
+    }
   }
 }
 
