@@ -1,6 +1,7 @@
 <script lang="ts">
   import "@fontsource-variable/space-grotesk";
   import "../app.css";
+  import "carta-md/default.css"; /* Default theme */
   import * as Sidebar from "$lib/components/ui/sidebar";
   import AppSidebar from "$lib/components/app-sidebar.svelte";
   let { children } = $props();
