@@ -24,7 +24,7 @@
         placeholder="Title"
         readonly
         disabled
-        class="disabled:cursor-default"
+        class="disabled:cursor-default disabled:opacity-90"
       />
     </div>
   </div>
