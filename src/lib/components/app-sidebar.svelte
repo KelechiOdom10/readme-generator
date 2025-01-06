@@ -5,6 +5,10 @@
   import { sectionTemplates } from "../../data/section-templates";
   import { readmeStore } from "$lib/stores/readme-store.svelte";
   import { cn } from "$lib/utils";
+  import type { Section } from "../../types/readme";
+  import { draggable, droppable, type DragDropState } from "@thisux/sveltednd";
+  import { flip } from "svelte/animate";
+  import { fade } from "svelte/transition";
 
   let searchQuery = $state("");
 
@@ -19,6 +23,21 @@
   const totalSectionsLength = $derived(
     filteredTemplates.length + readmeStore.selectedSections.length
   );
+
+  function handleDrop(state: DragDropState<Section>) {
+    const { draggedItem, targetContainer } = state;
+    const dragIndex = readmeStore.selectedSections.findIndex(
+      (item: Section) => item.id === draggedItem.id
+    );
+    const dropIndex = parseInt(targetContainer ?? "0");
+
+    if (dragIndex !== -1 && !isNaN(dropIndex)) {
+      const [item] = readmeStore.selectedSections.splice(dragIndex, 1);
+      readmeStore.selectedSections.splice(dropIndex, 0, item);
+      readmeStore.updatePreview();
+      readmeStore.saveToStorage();
+    }
+  }
 </script>
 
 <Sidebar.Root side="left" variant="sidebar">
@@ -32,20 +51,31 @@
       </hgroup>
       <Sidebar.GroupContent>
         <Sidebar.Menu class="space-y-2">
-          {#each readmeStore.selectedSections as selectedSection}
-            <Sidebar.MenuItem>
-              <Sidebar.MenuButton
-                variant="outline"
-                class={cn({
-                  "outline-primary-600 dark:outline-primary-800 outline":
-                    selectedSection.id === readmeStore.currentSection?.id
-                })}
-                onclick={() => readmeStore.setCurrentSection(selectedSection)}
-              >
-                <GripVerticalIcon class="size-5 cursor-grab" />
-                {selectedSection.title}
-              </Sidebar.MenuButton>
-            </Sidebar.MenuItem>
+          {#each readmeStore.selectedSections as selectedSection, index (selectedSection.id)}
+            <div
+              use:draggable={{ container: index.toString(), dragData: selectedSection }}
+              use:droppable={{
+                container: index.toString(),
+                callbacks: { onDrop: handleDrop }
+              }}
+              animate:flip={{ duration: 200 }}
+              in:fade={{ duration: 150 }}
+              out:fade={{ duration: 150 }}
+            >
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton
+                  variant="outline"
+                  class={cn("svelte-dnd-touch-feedback", {
+                    "outline-primary-600 dark:outline-primary-800 outline":
+                      selectedSection.id === readmeStore.currentSection?.id
+                  })}
+                  onclick={() => readmeStore.setCurrentSection(selectedSection)}
+                >
+                  <GripVerticalIcon class="size-5 cursor-grab" />
+                  {selectedSection.title}
+                </Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </div>
           {/each}
         </Sidebar.Menu>
       </Sidebar.GroupContent>

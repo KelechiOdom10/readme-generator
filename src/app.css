@@ -233,4 +233,12 @@
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
   }
+
+  .dragging {
+    @apply ring-primary-400 rounded-md border-none opacity-95 ring-2 outline-none ring-inset;
+  }
+
+  .drag-over {
+    @apply bg-primary-50 ring-primary-200 dark:bg-gray-850 rounded-md outline outline-gray-600;
+  }
 }

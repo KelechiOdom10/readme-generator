@@ -70,11 +70,11 @@ export class ReadmeStore {
     this.saveToStorage();
   }
 
-  private updatePreview() {
+  updatePreview() {
     this.#preview = this.#selectedSections.map((section) => section.markdown).join("\n");
   }
 
-  private saveToStorage() {
+  saveToStorage() {
     if (!browser) return;
     saveSections(this.#selectedSections);
   }
@@ -102,7 +102,7 @@ export class ReadmeStore {
   }
 
   deleteSection(title: string) {
-    this.#selectedSections = this.#selectedSections.filter(section => section.title !== title);
+    this.#selectedSections = this.#selectedSections.filter((section) => section.title !== title);
     this.updatePreview();
     this.saveToStorage();
   }
