@@ -1,38 +1,55 @@
-# sv
+# README Generator
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is just a small project that was made to help create a readme generator which is something I've always needed. It's also allowed me learn some new technologies in the process!
 
-## Creating a project
+It is a Svelte-based application designed to streamline the process of creating and managing project documentation. This tool allows users to easily generate, edit, and format README files, making it an essential utility for developers
 
-If you're seeing this, you've probably already done this step. Congrats!
+# 😁
+
+> Fun fact this README was generated using the app
+
+## Features
+
+- Dynamic editing of README files
+- Support for Markdown formatting
+- Light/dark mode supported via `prefers-color-scheme`
+- Live previews of the README content
+- Responsive design for various devices
+
+## Tech Stack
+
+- [Sveltekit ](https://svelte.dev/docs/kit/introduction)
+- [Tailwind v4](https://tailwindcss.com/docs/v4-beta)
+- [Carta md editor](https://beartocode.github.io/carta/introduction)
+- [Svelte dnd library](https://github.com/thisuxhq/sveltednd)
+- Storybook
+
+## Run Locally
+
+Clone the project
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+  git clone https://github.com/KelechiOdom10/readme-generator
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Go to the project directory
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+  cd readme-generator
 ```
 
-## Building
-
-To create a production version of your app:
+Install dependencies
 
 ```bash
-npm run build
+  bun install
 ```
 
-You can preview the production build with `npm run preview`.
+Start the server
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+  bun run dev
+```
+
+## Contributing
+
+Contributions are always welcome!
