@@ -34,16 +34,3 @@
 </script>
 
 <MarkdownEditor {carta} bind:value {labels} {selectedTab} {mode} {disableToolbar} />
-
-<style>
-  /* Set your monospace font (Required to have the editor working correctly!) */
-  :global(.carta-font-code) {
-    font-size: 0.875rem;
-  }
-
-  :global(.carta-renderer) {
-    height: 78vh !important;
-    overflow: auto !important;
-    min-height: 100% !important;
-  }
-</style>

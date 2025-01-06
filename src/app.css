@@ -241,4 +241,14 @@
   .drag-over {
     @apply bg-primary-50 ring-primary-200 dark:bg-gray-850 rounded-md outline outline-gray-600;
   }
+
+  .carta-font-code {
+    font-size: 0.875rem;
+  }
+
+  .carta-renderer {
+    height: 78vh !important;
+    overflow: auto !important;
+    min-height: 100% !important;
+  }
 }
